@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->uuid('tenant_id');
             $table->foreignUuid('tenant_id')->references('id')->on('tenants')->cascadeOnDelete();
 
             $table->string('stripe_subscription_id')->unique();

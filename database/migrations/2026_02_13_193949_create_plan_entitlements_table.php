@@ -12,9 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('plan_entitlements', function (Blueprint $table) {
-            $table->uuid('plan_id');
-            $table->uuid('feature_id');
-
             $table->foreignUuid('plan_id')->references('id')->on('plans')->cascadeOnDelete();
             $table->foreignUuid('feature_id')->references('id')->on('features')->cascadeOnDelete();
 

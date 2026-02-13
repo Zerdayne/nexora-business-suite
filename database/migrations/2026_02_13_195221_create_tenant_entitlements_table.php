@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tenant_entitlements', function (Blueprint $table) {
-            $table->uuid('tenant_id');
             $table->foreignUuid('tenant_id')->references('id')->on('tenants')->cascadeOnDelete();
 
             $table->string('feature_key');

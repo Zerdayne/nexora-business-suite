@@ -14,10 +14,7 @@ return new class extends Migration
         Schema::create('subscription_modules', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->uuid('subscription_id');
             $table->foreignUuid('subscription_id')->references('id')->on('subscriptions')->cascadeOnDelete();
-
-            $table->uuid('module_id');
             $table->foreignUuid('module_id')->references('id')->on('modules')->cascadeOnDelete();
 
             $table->string('status')->default('active'); // active|suspended|canceled
