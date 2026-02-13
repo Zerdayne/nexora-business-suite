@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Entitlements\EntitlementsRebuilder;
+use App\Models\Tenant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,5 +21,8 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             TenantSeeder::class,
         ]);
+
+        $rebuilder = app(EntitlementsRebuilder::class);
+        Tenant::query()->get()->each(fn (Tenant $tenant) => $rebuilder->rebuildForTenant($tenant));
     }
 }
