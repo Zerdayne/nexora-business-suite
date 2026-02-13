@@ -9,11 +9,11 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-final class ResolveTenantMiddleware
+final readonly class ResolveTenantMiddleware
 {
     public function __construct(
-        private readonly TenantResolver $resolver,
-        private readonly TenantContextManager $manager
+        private TenantResolver       $resolver,
+        private TenantContextManager $manager
     ) {}
 
     /**

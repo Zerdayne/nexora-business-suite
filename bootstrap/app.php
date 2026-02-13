@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\RequireModuleActive;
+use App\Http\Middleware\RequirePermission;
+use App\Http\Middleware\RequireRole;
 use App\Http\Middleware\ResolveTenantMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -12,7 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->append(ResolveTenantMiddleware::class);
+        $middleware->alias([
+            'tenant' => ResolveTenantMiddleware::class,
+            'perm' => RequirePermission::class,
+            'role' => RequireRole::class,
+            'module' => RequireModuleActive::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
