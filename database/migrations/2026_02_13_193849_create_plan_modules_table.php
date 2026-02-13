@@ -18,7 +18,6 @@ return new class extends Migration
             $table->boolean('is_active')->default(false);
 
             $table->timestamps();
-            $table->softDeletes();
 
             $table->primary(['plan_id', 'module_id']);
         });

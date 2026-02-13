@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignUuid('role_id')->references('id')->on('roles')->cascadeOnDelete();
 
             $table->timestamps();
-            $table->softDeletes();
 
             $table->primary(['tenant_id', 'user_id', 'role_id']);
             $table->index(['tenant_id', 'user_id']);

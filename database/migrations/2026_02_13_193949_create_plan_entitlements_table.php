@@ -18,7 +18,6 @@ return new class extends Migration
             $table->jsonb('value');
 
             $table->timestamps();
-            $table->softDeletes();
 
             $table->primary(['plan_id', 'feature_id']);
         });

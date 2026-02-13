@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignUuid('permission_id')->references('id')->on('permissions')->cascadeOnDelete();
 
             $table->timestamps();
-            $table->softDeletes();
 
             $table->primary(['role_id', 'permission_id']);
         });

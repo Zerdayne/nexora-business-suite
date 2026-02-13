@@ -21,7 +21,6 @@ return new class extends Migration
             $table->timestamp('activated_at')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
 
             $table->primary(['tenant_id', 'user_id']);
             $table->index(['tenant_id', 'status']);
