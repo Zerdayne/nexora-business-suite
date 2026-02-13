@@ -19,7 +19,7 @@ class CatalogSeeder extends Seeder
         $base = Plan::query()->updateOrCreate(
             ['key' => 'base'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Base',
                 'included_seats' => 5,
                 'included_api_units' => 100_000,
@@ -31,7 +31,7 @@ class CatalogSeeder extends Seeder
         $growth = Plan::query()->updateOrCreate(
             ['key' => 'growth'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Growth',
                 'included_seats' => 15,
                 'included_api_units' => 500_000,
@@ -44,7 +44,7 @@ class CatalogSeeder extends Seeder
         $crm = Module::query()->updateOrCreate(
             ['key' => 'crm'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'CRM',
                 'description' => 'Deals, Accounts, Pipelines',
                 'is_active' => true,
@@ -55,7 +55,7 @@ class CatalogSeeder extends Seeder
         $documents = Module::query()->updateOrCreate(
             ['key' => 'documents'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Documents',
                 'description' => 'Templates, Versions, Publishing',
                 'is_active' => true,
@@ -67,7 +67,7 @@ class CatalogSeeder extends Seeder
         Feature::query()->updateOrCreate(
             ['module_id' => $crm->id, 'key' => 'export.csv'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Export to CSV',
                 'type' => 'boolean',
                 'default_value' => ['enabled' => false],
@@ -77,7 +77,7 @@ class CatalogSeeder extends Seeder
         Feature::query()->updateOrCreate(
             ['module_id' => $documents->id, 'key' => 'export.pdf'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Export to PDF',
                 'type' => 'boolean',
                 'default_value' => ['enabled' => false],

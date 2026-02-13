@@ -33,7 +33,7 @@ class PermissionSeeder extends Seeder
             Permission::query()->updateOrCreate(
                 ['key' => $perm['key']],
                 [
-                    'id' => Str::uuid(),
+                    'id' => (string) Str::uuid(),
                     'module_key' => $perm['module_key'],
                     'description' => $perm['description'],
                 ]

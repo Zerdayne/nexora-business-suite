@@ -15,7 +15,7 @@ return new class extends Migration
             $table->foreignUuid('plan_id')->references('id')->on('plans')->cascadeOnDelete();
             $table->foreignUuid('module_id')->references('id')->on('modules')->cascadeOnDelete();
 
-            $table->boolean('is_active')->default(false);
+            $table->boolean('is_included')->default(false);
 
             $table->timestamps();
 

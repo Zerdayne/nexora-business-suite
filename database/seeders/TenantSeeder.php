@@ -21,7 +21,7 @@ class TenantSeeder extends Seeder
         $tenant = Tenant::query()->updateOrCreate(
             ['slug' => 'acme'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'ACME GmbH',
                 'status' => 'active',
                 'timezone' => 'Europe/Berlin',
@@ -53,7 +53,7 @@ class TenantSeeder extends Seeder
         $roleAdmin = Role::query()->updateOrCreate(
             ['tenant_id' => $tenant->id, 'key' => 'admin'],
             [
-                'id' => Str::uuid(),
+                'id' => (string) Str::uuid(),
                 'name' => 'Admin',
             ]
         );
