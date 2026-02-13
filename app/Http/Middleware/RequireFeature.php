@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RequireModuleActive
+final class RequireFeature
 {
     public function __construct(private readonly FeatureGate $gate) {}
 
@@ -16,9 +16,9 @@ class RequireModuleActive
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $moduleKey): Response
+    public function handle(Request $request, Closure $next, string $featureKey): Response
     {
-        $this->gate->assertEnabled("module.$moduleKey.enabled", 402);
+        $this->gate->assertEnabled($featureKey, 402);
 
         return $next($request);
     }

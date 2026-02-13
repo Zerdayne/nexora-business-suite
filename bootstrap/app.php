@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\RequireFeature;
 use App\Http\Middleware\RequireModuleActive;
 use App\Http\Middleware\RequirePermission;
 use App\Http\Middleware\RequireRole;
@@ -20,6 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'perm' => RequirePermission::class,
             'role' => RequireRole::class,
             'module' => RequireModuleActive::class,
+            'feature' => RequireFeature::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
